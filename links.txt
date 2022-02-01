@@ -1,0 +1,6 @@
+https://stackoverflow.com/questions/35989666/convert-milliseconds-to-hours-min-and-seconds-python
+https://stackoverflow.com/questions/175554/how-to-convert-milliseconds-into-human-readable-form
+
+https://github.com/scorpiontornado/Corona-Virus-Website/blob/master/static/css/main.css
+
+https://stackoverflow.com/questions/3277503/how-to-read-a-file-line-by-line-into-a-list

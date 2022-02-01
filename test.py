@@ -1,8 +1,6 @@
-with open("input.txt") as file: # Use file to refer to the file object
+with open("input.txt") as file:
+  scores = []
 
-   data = file.read()
-
-
-for line in (data):
-  print("line")
-print(data)
+  for line in file:
+    line = line.rstrip() # remove all whitespace characters (newlines and spaces) from the end of each line
+    print(line)
