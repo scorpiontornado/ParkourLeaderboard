@@ -3,4 +3,6 @@ https://stackoverflow.com/questions/175554/how-to-convert-milliseconds-into-huma
 
 https://github.com/scorpiontornado/Corona-Virus-Website/blob/master/static/css/main.css
 
+https://stackoverflow.com/questions/22158031/css-inserting-a-background-image-into-a-header
+
 https://stackoverflow.com/questions/3277503/how-to-read-a-file-line-by-line-into-a-list
