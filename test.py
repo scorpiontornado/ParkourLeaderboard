@@ -50,25 +50,20 @@ def to_millis(minutes, seconds, millis):
   return millis_out
 
 def best_time(person):
-  print("INSIDE best_time()")
   times = person["times"]
+  times.sort(key=lambda time: to_millis(*process_time(time))) # Sort times by their millisecond equivalent
+  # Need to make sure the first time is the best one for display purposes
+  return times[0] # Return the best time
 
-  print(times)
-  times_sorted = sorted(times, key=lambda time: to_millis(*process_time(time)))
-
-  print(times_sorted)
-  print(times_sorted[0])
-  print("LEAVING best_times()")
-  
-  return times_sorted[0] # Return the best time
+def print_people(people):
+  for i, person in enumerate(people):
+    print(f"{i+1}: {person['name']} (yr {person['year']} {person['house']}): {person['times'][0]}")
 
 people = input_data()
+print("\nBefore sorting:")
 print(people)
-people_sorted = sorted(people, key=lambda person: to_millis(*process_time(best_time(person))))
-print(people_sorted)
 
-print("\n*** TESTING INDIVIDUAL FUNCTIONS ***")
-print(process_time("1:49.28"))
-print(to_millis(*process_time("1:49.28")))
-
-print(best_time({'name': 'Nicholas Langford', 'year': ' 12', 'house': ' Westminster', 'times': [' 1:47.89', ' 1:46.89']}))
+people_sorted = sorted(people, key=lambda person: to_millis(*process_time(best_time(person)))) # Sort people by the millisecond equivalent of their best time
+print("\nAfter sorting:")
+print(people_sorted, end="\n\n")
+print_people(people_sorted)

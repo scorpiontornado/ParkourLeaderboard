@@ -1,10 +1,17 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template
 app = Flask('app')
 
-def to_millis(minutes, seconds, millis):
-  millis_out = (minutes * 60 + seconds) *1000 + millis
-  
-  return millis_out
+'''
+Data structure
+[
+  {
+    "name": "[First] [Last]",
+    "year": integer,
+    "house": String,
+    "times": ["minutes:seconds.millis"],
+  }
+]
+'''
 
 def input_data(location="input.txt"):
   with open(location) as file:
@@ -42,54 +49,37 @@ def input_data(location="input.txt"):
         )
 
   return people
+
+def process_time(time):
+  """ Return minutes, seconds, millis from a string in the form minutes:seconds.millis """
+  minutes, seconds_millis = time.split(":")
+  seconds, millis = seconds_millis.split(".")
+
+  #print(f"Output of process time: minutes {minutes}, seconds {seconds}, millis {millis}")
+  return minutes, seconds, millis
+
+def to_millis(minutes, seconds, millis):
+  """ Convert minutes, seconds, millis to millis """
+  millis_out = (int(minutes) * 60 + int(seconds)) *1000 + int(millis)
   
+  return millis_out
 
-'''
-Old data structure:
-[
-  {"name": "[First] [Last]", "raw_time": "minutes:seconds.millis", "millis": integer}
-]
+def best_time(person):
+  times = person["times"]
+  times.sort(key=lambda time: to_millis(*process_time(time))) # Sort times by their millisecond equivalent
+  # Need to make sure the first time is the best one for display purposes
+  return times[0] # Return the best time
 
-New data structure:
+def print_people(people):
+  for i, person in enumerate(people):
+    print(f"{i+1}: {person['name']} (yr {person['year']} {person['house']}): {person['times'][0]}")
 
-OPTION 1 - only store the best time, and update each time a better one is found
-[
-  {
-    "name": "[First] [Last]",
-    "year": integer,
-    "house": String,
-    "raw_time": "minutes:seconds.millis",
-    "millis": integer
-  }
-]
-
-OPTION 2 - calculate the best time (in millis) for each person/dictionary
-[
-  {
-    "name": "[First] [Last]",
-    "year": integer,
-    "house": String,
-    "raw_times": ["minutes:seconds.millis"],      
-    "best_millis": integer
-  }
-]
-
-OPTION 3 - only store raw times, and sort using a function as a key which converts times to millis and then returns the best time
-[
-  {
-    "name": "[First] [Last]",
-    "year": integer,
-    "house": String,
-    "times": ["minutes:seconds.millis"],
-  }
-]
-
-Option 3 seems the cleanest, given that the millis are only used for sorting and not for display
-'''
-
+### FLASK ROUTES ###
+# Route to the home page
 @app.route('/')
 def home():
     leaderboard = []
     return render_template('home.html', leaderboard=leaderboard)
 
-app.run(host='0.0.0.0', port=8080)
+if __name__ == '__main__':
+  app.run(host='0.0.0.0', port=8080)
