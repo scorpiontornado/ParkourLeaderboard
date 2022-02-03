@@ -40,6 +40,7 @@ def process_time(time):
   minutes, seconds_millis = time.split(":")
   seconds, millis = seconds_millis.split(".")
 
+  #print(f"Output of process time: minutes {minutes}, seconds {seconds}, millis {millis}")
   return minutes, seconds, millis
 
 def to_millis(minutes, seconds, millis):
@@ -49,13 +50,25 @@ def to_millis(minutes, seconds, millis):
   return millis_out
 
 def best_time(person):
+  print("INSIDE best_time()")
   times = person["times"]
 
-  times_sorted = times.sort(key=lambda time: to_millis(process_time(time)))
+  print(times)
+  times_sorted = sorted(times, key=lambda time: to_millis(*process_time(time)))
 
-  return times_sorted[0] # Return the best time
+  print(times_sorted)
+  print(times_sorted[0])
+  print("LEAVING best_times()")
   
+  return times_sorted[0] # Return the best time
+
 people = input_data()
 print(people)
-people_sorted = people.sort(key=lambda person: to_millis(best_time(person)))
+people_sorted = sorted(people, key=lambda person: to_millis(*process_time(best_time(person))))
 print(people_sorted)
+
+print("\n*** TESTING INDIVIDUAL FUNCTIONS ***")
+print(process_time("1:49.28"))
+print(to_millis(*process_time("1:49.28")))
+
+print(best_time({'name': 'Nicholas Langford', 'year': ' 12', 'house': ' Westminster', 'times': [' 1:47.89', ' 1:46.89']}))
