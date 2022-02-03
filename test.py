@@ -1,8 +1,3 @@
-def to_millis(minutes, seconds, millis):
-  millis_out = (minutes * 60 + seconds) *1000 + millis
-  
-  return millis_out
-
 def input_data(location="input.txt"):
   with open(location) as file:
     people = []
@@ -39,7 +34,28 @@ def input_data(location="input.txt"):
         )
 
   return people
+
+def process_time(time):
+  """ Return minutes, seconds, millis from a string in the form minutes:seconds.millis """
+  minutes, seconds_millis = time.split(":")
+  seconds, millis = seconds_millis.split(".")
+
+  return minutes, seconds, millis
+
+def to_millis(minutes, seconds, millis):
+  """ Convert minutes, seconds, millis to millis """
+  millis_out = (int(minutes) * 60 + int(seconds)) *1000 + int(millis)
+  
+  return millis_out
+
+def best_time(person):
+  times = person["times"]
+
+  times_sorted = times.sort(key=lambda time: to_millis(process_time(time)))
+
+  return times_sorted[0] # Return the best time
   
 people = input_data()
-
 print(people)
+people_sorted = people.sort(key=lambda person: to_millis(best_time(person)))
+print(people_sorted)
