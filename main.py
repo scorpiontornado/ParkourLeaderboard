@@ -78,8 +78,16 @@ def print_people(people):
 # Route to the home page
 @app.route('/')
 def home():
-    leaderboard = []
-    return render_template('home.html', leaderboard=leaderboard)
+  people = input_data()
+  print("\nBefore sorting:")
+  print(people)
+  
+  people_sorted = sorted(people, key=lambda person: to_millis(*process_time(best_time(person)))) # Sort people by the millisecond equivalent of their best time
+  print("\nAfter sorting:")
+  print(people_sorted, end="\n\n")
+  print_people(people_sorted)
+
+  return render_template('home.html', people=people_sorted)
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=8080)

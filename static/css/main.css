@@ -91,6 +91,19 @@ tbody tr:nth-child(even) {
   background-color: white;
 }
 
+tbody tr:nth-child(1) {
+  background-color: #ffe291;
+}
+
+tbody tr:nth-child(2) {
+  background-color: #8c8c8c;
+  color: white;
+}
+
+tbody tr:nth-child(3) {
+  background-color: #cd7f32;
+}
+
 thead {
   background-color: darkcyan;
   color: white;

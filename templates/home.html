@@ -11,7 +11,28 @@
   </head>
   <body>
     <div id="h">
-      <h1>Westminster Parkour Leaderboard</h1>
+      <h1>Westminster MC Parkour Leaderboard</h1>
     </div>
+
+    <table border = 1>
+      <thead>
+        <td>Rank</td>
+        <td>Name</td>
+        <td>Yr</td>
+        <td>House</td>
+        <td>Best Time</td>
+      </thead>
+      
+      {% for person in people %}
+        <tr>
+          <td>{{loop.index}}</td>
+          <td>{{person["name"]}}</td>
+          <td>{{person["year"]}}</td>
+          <td>{{person["house"]}}</td>
+          <td>{{person["times"][0]}}</td>
+        </tr>
+      {% endfor %}
+  </table>
+    
   </body>
 </html>
