@@ -83,8 +83,14 @@ td {
   text-align: center;
 }
 
+thead {
+  background-color: #323c67;
+  color: white;
+  font-size: 18px;
+}
+
 tbody tr:nth-child(odd) {
-  background-color: lightgrey;
+  background-color: #ebeeff;
 }
 
 tbody tr:nth-child(even) {
@@ -92,20 +98,14 @@ tbody tr:nth-child(even) {
 }
 
 tbody tr:nth-child(1) {
-  background-color: #ffe291;
+  background-color: #FFE55C;
 }
 
 tbody tr:nth-child(2) {
-  background-color: #8c8c8c;
-  color: white;
+  background-color: #cccccc;
 }
 
 tbody tr:nth-child(3) {
-  background-color: #cd7f32;
+  background-color: #d7995b;
 }
 
-thead {
-  background-color: darkcyan;
-  color: white;
-  font-size: 18px;
-}
