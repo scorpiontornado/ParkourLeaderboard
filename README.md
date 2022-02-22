@@ -1,25 +1,17 @@
-Flask is a minimal Python framework that helps you create a web server. 
+A simple Flask website to display a leaderboard of the results of Westminster's Minecraft parkour competition for SACS' MakeOff
 
-Let's take a look at the code we have:
+Currently hosted using repl. See:
+  * https://replit.com/@NicholasLangfor/ParkourLeaderboard
+  * https://ParkourLeaderboard.nicholaslangfor.repl.co
 
-```python
-from flask import Flask
+# Use 
+The webstite only has one (root) directory/webpage, which displays a sorted list of people and their times (with the best times at the top)
 
-app = Flask(__name__)
+# Input
+The times are inputted manually into the file "readme.txt" in the format:
+`[firstname] [lastname], [year], [house], [time minutes:seconds.milliseconds]`
 
-@app.route("/")
-def hello_world():
-    return "<h1>Hello, World!</h1>"
-```
-	
-What did that code do?
+E.g. if Nicholas Langford in Year 12 Westminster got a time of 1 minute, 47 seconds and 89 milliseconds, the following would be inputted into "input.txt":
+`Nicholas Langford, 12, Westminster, 1:47.89`
 
-First we `import` the `Flask` class. An instance of this class will be our WSGI application.
-
-Next we create an instance of this class. The first argument is the name of the application’s module or package. `__name__` is a convenient shortcut for this that is appropriate for most cases. This is needed so that Flask knows where to look for resources such as templates and static files.
-
-We then use the `route()` decorator to tell Flask what URL should trigger our function. In this case we use `/` routh, which is the default route of any website.
-
-The function returns the message we want to display in the user’s browser. The default content type is HTML, so HTML in the string will be rendered by the browser.
-
-To learn more, checkout the [official guide](https://flask.palletsprojects.com/en/2.0.x/quickstart/).
+Each entry is separated by a newline character ("enter" or "return" on a keyboard)
