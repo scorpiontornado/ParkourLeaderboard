@@ -74,20 +74,26 @@ def print_people(people):
   for i, person in enumerate(people):
     print(f"{i+1}: {person['name']} (yr {person['year']} {person['house']}): {person['times'][0]}")
 
+people_sorted = None
+
 ### FLASK ROUTES ###
 # Route to the home page
 @app.route('/')
 def home():
-  people = input_data()
-  print("\nBefore sorting:")
-  print(people)
-  
-  people_sorted = sorted(people, key=lambda person: to_millis(*process_time(best_time(person)))) # Sort people by the millisecond equivalent of their best time
-  print("\nAfter sorting:")
-  print(people_sorted, end="\n\n")
-  print_people(people_sorted)
+  global people_sorted
+  try:
+    people = input_data()
+    print("\nBefore sorting:")
+    print(people)
+    
+    people_sorted = sorted(people, key=lambda person: to_millis(*process_time(best_time(person)))) # Sort people by the millisecond equivalent of their best time
+    print("\nAfter sorting:")
+    print(people_sorted, end="\n\n")
+    print_people(people_sorted)
+  except Exception:
+    # E.g. if incorrect input, retain the previous input using global people_sorted
+    print(Exception)
 
   return render_template('home.html', people=people_sorted)
-
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=8080)

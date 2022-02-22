@@ -111,3 +111,11 @@ tbody tr:nth-child(2) {
 tbody tr:nth-child(3) {
   background-color: #d7995b;
 }
+
+.multicolortext {
+  background-image: linear-gradient(to left, violet, indigo, blue, #66cc66, #FFCC00, darkorange, red);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

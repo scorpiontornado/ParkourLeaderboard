@@ -8,31 +8,37 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='css/main.css') }}"
     />
+    <meta http-equiv="refresh" content="5" />
   </head>
   <body>
     <div id="h">
       <h1>Westminster Minecraft Parkour Leaderboard</h1>
     </div>
 
-    <table border = 1>
-      <thead>
-        <td>Rank</td>
-        <td>Name</td>
-        <td>Year</td>
-        <td>House</td>
-        <td>Best Time</td>
-      </thead>
-      
-      {% for person in people %}
-        <tr>
-          <td>{{loop.index}}</td>
-          <td>{{person["name"]}}</td>
-          <td>{{person["year"]}}</td>
-          <td>{{person["house"]}}</td>
-          <td>{{person["times"][0]}}</td>
-        </tr>
-      {% endfor %}
-  </table>
+    {% if people %}
+      <table border = 1>
+        <thead>
+          <td>Rank</td>
+          <td>Name</td>
+          <td>Year</td>
+          <td>House</td>
+          <td>Best Time</td>
+        </thead>
+        
+        {% for person in people %}
+          <tr>
+            <td>{{loop.index}}</td>
+            <td>{{person["name"]}}</td>
+            <td>{{person["year"]}}</td>
+            <td>{{person["house"]}}</td>
+            <td>{{person["times"][0]}}</td>
+          </tr>
+        {% endfor %}
+      </table>
+    {% else %}
+
+    <h2 class="multicolortext">Sorry, there are no people yet. Please participate to win prizes!</h2>
+    {% endif %}
     
   </body>
 </html>

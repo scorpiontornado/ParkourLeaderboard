@@ -6,3 +6,12 @@ https://github.com/scorpiontornado/Corona-Virus-Website/blob/master/static/css/m
 https://stackoverflow.com/questions/22158031/css-inserting-a-background-image-into-a-header
 
 https://stackoverflow.com/questions/3277503/how-to-read-a-file-line-by-line-into-a-list
+
+https://stackoverflow.com/questions/8470431/what-is-the-best-way-to-implement-a-forced-page-refresh-using-flask
+https://flask.palletsprojects.com/en/2.0.x/patterns/jquery/#the-html
+https://stackoverflow.com/questions/70481879/how-to-auto-refresh-html-table-fields-rendered-with-a-for-loop-in-flask
+https://stackoverflow.com/questions/5404839/how-can-i-refresh-a-page-with-jquery?rq=1
+
+https://www.w3docs.com/snippets/css/how-to-create-a-multicolor-text-in-html-and-css.html
+
+https://stackoverflow.com/questions/2787679/how-to-reload-page-every-5-seconds
