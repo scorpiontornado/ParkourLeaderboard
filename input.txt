@@ -10,3 +10,5 @@ Seren Williams, 12, York, 0:20.77
 Jamie Sullivan, 12, Durham, 2:0.05
 Louis Vahl, 12, ???, 4:22.67
 Thomas Langford, 9, Westminster, 0:38.40
+Ryan Langley, 12, Westminster, 0:4.20
+Thomas Jackman, 12, Westminster, 5:29.29
